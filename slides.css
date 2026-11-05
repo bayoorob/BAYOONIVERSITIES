@@ -1,0 +1,90 @@
+:root {
+  --paper: #15191e;
+  --ink: #f6f7f9;
+  --muted: #a9b2c0;
+  --accent: #ddf46b;
+  --green: #8be0b0;
+  --red: #ff8b89;
+  --line: #414750;
+  --lime: #ddf46b;
+  --font-main: "Bahnschrift", "Aptos", "Trebuchet MS", sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+}
+
+body { background: var(--paper); }
+.deck-loading .reveal { opacity: 0; }
+.reveal { color: var(--ink); font-family: var(--font-main); font-size: 26px; }
+.reveal .backgrounds { background: var(--paper); }
+.reveal .slides { text-align: left; }
+.reveal .slides section { box-sizing: border-box; height: 675px; padding: 34px 46px 44px; }
+.reveal h1, .reveal h2, .reveal h3 { font-family: var(--font-main); font-weight: 700; letter-spacing: 0; text-transform: none; }
+.reveal h1 { font-size: 64px; line-height: 1.05; margin: 22px 0 18px; }
+.title-subline { display: block; color: var(--accent); font-size: 32px; margin-top: 16px; }
+.reveal h2 { font-size: 46px; line-height: 1.12; margin: 0 0 28px; }
+.reveal h3 { font-size: 26px; line-height: 1.2; margin: 0 0 18px; color: var(--accent); }
+.reveal p { line-height: 1.4; margin: 16px 0; }
+.reveal .eyebrow { color: var(--accent); text-transform: uppercase; font-family: var(--font-main); font-size: 16px; font-weight: 600; margin: 0 0 28px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.reveal .lead { font-size: 32px; max-width: 950px; }
+.reveal .opening-question { font-size: 25px; max-width: 1000px; }
+.reveal .footnote { font-size: 16px; color: var(--muted); margin-top: 20px; line-height: 1.45; }
+.reveal .statement { color: var(--accent); border-top: 2px solid var(--accent); padding-top: 18px; margin-top: 26px; font-size: 26px; font-weight: 600; }
+.reveal ul { margin: 0 0 0 24px; display: block; }
+.reveal li { line-height: 1.45; margin: 12px 0; }
+.comparison, .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin: 30px 0 24px; }
+.comparison > div { border-top: 3px solid var(--ink); padding-top: 22px; }
+.comparison > div:last-child { border-color: var(--accent); }
+.reveal .status { font-size: 22px; font-weight: 700; }
+.good { color: var(--green); }
+.bad { color: var(--red); }
+.rule-equation { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 26px; align-items: center; margin: 32px 0; }
+.rule-equation span { padding: 18px 0; border-bottom: 3px solid var(--accent); font-size: 32px; font-weight: 600; }
+.rule-equation b { color: var(--muted); font-weight: 400; }
+.reveal table { width: 100%; font-size: 24px; border-collapse: collapse; margin: 24px 0; }
+.reveal th { color: var(--muted); font-size: 17px; text-transform: uppercase; }
+.reveal td, .reveal th { padding: 17px 20px 17px 0; border-bottom: 1px solid var(--line); line-height: 1.4; vertical-align: top; }
+.reveal tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+.reveal td:first-child { font-weight: 600; }
+.reveal .compact-table { font-size: 22px; }
+.reveal .compact-table td, .reveal .compact-table th { padding-block: 12px; }
+.reveal code { font-family: var(--font-mono); font-size: .86em; }
+.reveal pre { margin: 22px 0; width: 100%; box-shadow: none; font-family: var(--font-mono); font-size: 23px; line-height: 1.35; }
+.reveal pre code { max-height: none; padding: 22px 26px; border-radius: 3px; font-size: inherit; background: #1b2027; color: #ecedf1; tab-size: 4; }
+.reveal .code-slide h2 { margin-bottom: 22px; }
+.reveal .code-slide pre { font-size: 20px; line-height: 1.25; margin: 16px 0; }
+.reveal .code-slide pre code { padding: 18px 24px; }
+.reveal .code-slide .footnote { margin-top: 16px; }
+.terminal-output { background: #252c35; border-left: 4px solid var(--red); padding: 18px 22px; font-family: var(--font-mono); font-size: 22px; line-height: 1.6; }
+.mermaid { width: 100%; display: flex; justify-content: center; align-items: center; margin: 16px 0; }
+.mermaid svg { display: block; width: 100%; height: 100%; max-width: 100% !important; overflow: visible; }
+.mermaid svg, .mermaid svg * { filter: none !important; }
+.mermaid svg .node rect.label-container { stroke: #a9b2c0 !important; stroke-width: 1.5px !important; rx: 8px; ry: 8px; }
+.architecture-diagram { height: 265px; }
+.compact-diagram { height: 108px; }
+.scope-diagram { height: 310px; }
+.title-diagram { height: 112px; margin: 28px 0 26px; }
+.reveal .opening .lead { color: #c6cbd3; }
+.opening-bottom { display: flex; justify-content: space-between; border-top: 1px solid #414750; padding-top: 20px; font-size: 20px; color: #c6cbd3; }
+.reveal .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 44px; margin: 32px 0 0 30px; }
+.steps li { padding: 12px 0 18px 10px; margin: 0; border-top: 2px solid var(--line); }
+.steps li::marker { color: var(--accent); font-weight: 700; }
+.steps span { display: block; color: var(--muted); font-size: 22px; margin-top: 10px; }
+.reveal .closing h2 { font-size: 74px; line-height: 1.05; margin: 30px 0; }
+.takeaway { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; border-top: 2px solid var(--lime); padding-top: 8px; margin-top: 34px; font-size: 23px; }
+.takeaway strong { color: var(--lime); }
+.sources { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 40px; margin: 40px 0; }
+.compact-sources { margin-top: 30px; }
+.reveal a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 12px; font-size: 23px; }
+.reveal a:hover { color: var(--red); border-color: var(--red); }
+.reveal .controls { color: var(--accent); bottom: 56px; right: 18px; }
+.reveal .progress { color: var(--accent); height: 4px; }
+.reveal .slide-number { background: transparent; color: var(--muted); font-family: var(--font-main); font-size: 15px; bottom: 124px; right: 24px; }
+.reveal .slide-number a { border: 0; padding: 0; font: inherit; color: inherit; }
+.deck-footer { position: fixed; bottom: 16px; left: 28px; right: 24px; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 24px; font-family: var(--font-main); color: var(--muted); font-size: 12px; line-height: 1.4; pointer-events: none; }
+.deck-footer span:last-child { justify-self: end; text-align: right; overflow-wrap: anywhere; }
+@media (max-width: 600px) { .deck-footer { font-size: 10px; left: 12px; right: 12px; bottom: 9px; gap: 16px; } }
+@media (prefers-reduced-motion: reduce) { .reveal .slides section { transition: none !important; } }
+@media print {
+  .deck-footer { display: none; }
+  .reveal .slides section { background: var(--paper); print-color-adjust: exact; }
+  .reveal pre code { white-space: pre-wrap; }
+}

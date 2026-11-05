@@ -1,0 +1,47 @@
+<section data-timing="120">
+  <p class="eyebrow">Begriff / Struktur statt Verhalten</p>
+  <h2>Andere Frage. Gleicher Testlauf.</h2>
+  <div class="comparison">
+    <div><h3>Unit-Test</h3><p>Berechnet der Service den richtigen Preis?</p><p class="footnote">Verhalten für konkrete Eingaben</p></div>
+    <div><h3>Architekturtest</h3><p>Darf dieser Service überhaupt den Controller kennen?</p><p class="footnote">Struktur und Abhängigkeitsrichtung</p></div>
+  </div>
+  <div class="rule-equation"><span>Welche Typen?</span><b>+</b><span>Welche Regel?</span><b>+</b><span>Wann prüfen?</span></div>
+  <p class="statement">Architekturentscheidungen werden zu ausführbaren Regeln.</p>
+  <aside class="notes">
+    Ein Architekturtest untersucht den Aufbau einer Anwendung: Welche Typen verwenden welche anderen Typen?
+
+    Welche Klassen implementieren ein Interface?
+
+    Wo liegen die öffentlichen Einstiegspunkte?
+
+    Ein Unit-Test untersucht dagegen typischerweise das Verhalten eines begrenzten Bausteins für konkrete Eingaben.
+
+    Beides kann im selben Testprojekt und im selben Testlauf passieren.
+
+    Der Unterschied liegt in der Frage, nicht unbedingt im Werkzeug.
+
+    Ein Service kann fachlich korrekt rechnen und gleichzeitig eine Abhängigkeit besitzen, die wir ausdrücklich nicht wollen.
+
+    Für eine brauchbare Architekturregel müssen drei Dinge klar sein.
+
+    Erstens die Auswahl: Welche Typen oder Module betrachten wir?
+
+    Zweitens die Erwartung: Was darf diese Auswahl kennen oder eben nicht kennen?
+
+    Drittens die Ausführung: Wann bekommt jemand das Ergebnis zu sehen?
+
+    Saubere Architektur ist keine prüfbare Aussage.
+
+    BusinessLogic darf keine Typen aus dem API-Namespace verwenden schon.
+
+    Das ist nebenbei ein nützlicher Test für unsere Architekturgespräche: Wenn wir die Entscheidung nicht konkret formulieren können, wird sie auch durch mehr Pfeile im Diagramm nicht eindeutiger.
+
+    Der Test ersetzt weder Unit- noch Integrations- noch End-to-End-Tests.
+
+    Er beantwortet eine zusätzliche Frage, die in diesen Tests oft gar nicht vorkommt.
+
+    Die Regeln sind damit ausführbare Dokumentation.
+
+    Allerdings nur für die Entscheidungen, die wir tatsächlich hineingeschrieben haben.
+  </aside>
+</section>

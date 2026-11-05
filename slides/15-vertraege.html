@@ -1,0 +1,33 @@
+<section class="code-slide" data-timing="0" data-appendix>
+  <p class="eyebrow">Vertiefung / Öffentliche Verträge</p>
+  <h2>public ist keine Architekturfreigabe.</h2>
+  <pre><code class="language-csharp" data-trim>
+namespace Shop.Customers.Contracts;
+
+public sealed record CustomerSummary(Guid Id, string Name);
+
+public interface ICustomerLookup
+{
+    CustomerSummary Find(Guid customerId);
+}
+  </code></pre>
+  <p class="statement">Orders kennt den Vertrag, nicht die Kundenpersistenz.</p>
+  <p class="footnote">C#-Ausschnitt einer Contracts-Assembly · System für Guid importieren</p>
+  <aside class="notes">
+    Eine Modulgrenze braucht nicht automatisch ein neues Interface für jede Klasse.
+
+    Hier ist der Vertrag sinnvoll, weil das Bestellmodul genau eine Kundeninformation benötigt, ohne die konkrete Speicherung zu kennen.
+
+    CustomerSummary gibt weder einen DbContext noch eine EF-Entity nach außen.
+
+    Die Implementierung von ICustomerLookup darf intern EF Core verwenden; Orders muss das nicht wissen.
+
+    Ob der Port im konsumierenden Modul oder in einer freigegebenen Contracts-Assembly liegt, ist eine Architekturentscheidung.
+
+    Das Interface allein erzwingt sie nicht.
+
+    Für interne Typen ist internal die stärkere Grenze, soweit wir sie nicht bewusst über InternalsVisibleTo öffnen.
+
+    Für öffentliche Implementierungen kann eine zusätzliche Abhängigkeitsregel helfen.
+  </aside>
+</section>

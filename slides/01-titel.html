@@ -1,0 +1,31 @@
+<section class="opening" data-timing="60">
+  <p class="eyebrow">Bayooniversity / Engineering</p>
+  <h1>Architektur, die sich<br> selbst kontrolliert <span class="title-subline">- Architekturtests</span></h1>
+  <p class="lead opening-question">Wie garantiere ich, dass unsere Architektur in sechs Monaten noch so aussieht wie heute?</p>
+  <div class="mermaid title-diagram" role="img" aria-label="Architekturentscheidung wird zur ausführbaren Regel und zum Pull-Request-Check.">
+flowchart LR
+  decision[Entscheidung] --> rule[Regel] --> test[Test]
+  classDef focus fill:#ddf46b,stroke:#ddf46b,color:#15191e
+  class rule focus
+  </div>
+  <div class="opening-bottom"><span>.NET + C#</span></div>
+  <aside class="notes">
+    Wie garantiere ich, dass unsere Architektur in sechs Monaten noch so aussieht wie heute?
+
+    Das Diagramm jedenfalls nicht.
+
+    Es bekommt einen neuen Zeitstempel, wenn wir es bearbeiten, aber keinen roten Balken, wenn wir dagegen verstoßen.
+
+    Code Reviews helfen, verlangen aber bei jeder Änderung dieselbe Aufmerksamkeit für dieselben Regeln.
+
+    Heute geht es um den Teil dieser Arbeit, den wir einem Test überlassen können.
+
+    Nicht um ein Framework, das uns die richtige Architektur ausdenkt.
+
+    Sondern um einen Check, der merkt, wenn wir eine getroffene Entscheidung wieder verlassen.
+
+    Alle Codebeispiele sind C#.
+
+    Wir bauen eine kleine Regel, machen sie absichtlich kaputt und schauen anschließend, wo diese Prüfung im Entwicklungsprozess wirklich hilft.
+  </aside>
+</section>

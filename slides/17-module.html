@@ -1,0 +1,35 @@
+<section data-timing="0" data-appendix>
+  <p class="eyebrow">Vertiefung / Erlaubt ist eine Entscheidung</p>
+  <h2>Verträge ja. Fremde Persistenz nein.</h2>
+  <div class="mermaid scope-diagram" role="img" aria-label="Orders.Application darf Orders.Domain und Customers.Contracts verwenden, aber nicht Customers.Infrastructure.">
+flowchart LR
+  orders[Orders.Application] -->|erlaubt| domain[Orders.Domain]
+  orders -->|erlaubt| contracts[Customers.Contracts]
+  orders -. verboten .-> persistence[Customers.Infrastructure]
+  classDef allowed fill:#18382c,stroke:#8be0b0,color:#a6efc5
+  classDef blocked fill:#421f24,stroke:#ff8b89,color:#ffb6b4
+  class domain,contracts allowed
+  class persistence blocked
+  linkStyle 2 stroke:#ff8b89,stroke-width:3px,stroke-dasharray:6 5
+  </div>
+  <p class="statement">Ein zugänglicher Typ ist nicht automatisch ein sinnvoller Typverweis.</p>
+  <aside class="notes">
+    Die drei Pfeile zeigen unterschiedliche Entscheidungen.
+
+    Die eigene Domain ist Teil der vorgesehenen Abhängigkeiten.
+
+    Der Kundenvertrag ist eine bewusst vereinbarte Kopplung zwischen Modulen.
+
+    Der konkrete Persistenztyp des Kundenmoduls ist es nicht.
+
+    Der Compiler prüft zunächst Zugänglichkeit und Typkorrektheit.
+
+    Der Architekturtest kann darüber hinaus die engere Regel des Teams absichern.
+
+    Wenn Orders zusätzliche Kundendaten benötigt, erweitern wir einen Vertrag oder ändern die Modulgrenze bewusst.
+
+    Ein direkter Zugriff auf die Datenbank eines anderen Moduls spart diese Entscheidung nur scheinbar.
+
+    Er trifft sie ebenfalls, nur ohne sie so zu nennen.
+  </aside>
+</section>

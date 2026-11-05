@@ -1,0 +1,35 @@
+<section class="code-slide" data-timing="0" data-appendix>
+  <p class="eyebrow">Vertiefung / Eine Konvention mit einem Grund</p>
+  <h2>Handler sind hier keine Basisklassen.</h2>
+  <pre><code class="language-csharp" data-trim>
+[Fact]
+public void Handlers_Should_Be_Sealed()
+{
+    var assembly = typeof(CreateOrderHandler).Assembly;
+    var handlers = assembly.GetTypes()
+        .Where(type => type.IsClass
+            && type.Name.EndsWith("Handler", StringComparison.Ordinal))
+        .ToArray();
+
+    Assert.NotEmpty(handlers);
+    Assert.All(handlers, type => Assert.True(type.IsSealed,
+        $"{type.FullName} must be sealed."));
+}
+  </code></pre>
+  <p class="footnote">xUnit + Reflection · Imports: System, System.Linq, Xunit und der Namespace des Anwendungstyps</p>
+  <aside class="notes">
+    Dieses Team erweitert Handler durch Komposition statt Vererbung.
+
+    Deshalb sollen konkrete Handler sealed sein.
+
+    Die Auswahl folgt dem vereinbarten Namenssuffix und wird ausdrücklich auf Nicht-Leere geprüft.
+
+    Der Test braucht nur Reflection und xUnit.
+
+    Das ist keine allgemeine Wahrheit über C#, sondern eine lokale Entscheidung mit einem Grund.
+
+    Wenn das Team tatsächlich Handler-Basisklassen benötigt, muss die Auswahl oder die Regel angepasst werden.
+
+    Einen beliebigen Stil zur unveränderlichen Architektur zu erklären, macht ihn nicht wichtiger, sondern nur anstrengender zu ändern.
+  </aside>
+</section>
