@@ -1,0 +1,48 @@
+<section data-timing="45">
+  <p class="eyebrow">
+    Architekturbeispiel Backend / Wer kennt wen?
+  </p>
+  <!-- <h2>BusinessLogic braucht keinen Rückweg.</h2> -->
+  <div class="architecture-controls">
+    <label class="architecture-toggle" for="hide-forbidden-accesses">
+      <input id="hide-forbidden-accesses" type="checkbox" data-hide-forbidden="shop-architecture-diagram" aria-controls="shop-architecture-diagram" checked>
+      <span>Verbotene Zugriffe ausblenden</span>
+    </label>
+  </div>
+  <div id="shop-architecture-diagram" class="mermaid architecture-diagram" data-src="diagrams/shop-architecture.mmd" role="img" aria-label="Abhängigkeiten zwischen Shop.Api, Shop.ApiObjects, Shop.BusinessLogic und Shop.Model.">
+  </div>
+  <p class="architecture-caption fragment">
+    Durchgezogene Pfeile zeigen erlaubte Typabhängigkeiten, gestrichelte Pfeile zeigen verbotene Abhängigkeiten.
+  </p>
+  <aside class="notes">
+
+Ich möchte das Thema anhand von diesem fiktiven Beispiel eines typischen .NET-Backends anschaulich machen.
+
+Wir haben hier unsere API, die BusinessLogic, die ApiObjects und unser Model mit den
+EF-Core-Entities und dem DbContext.
+
+Die Idee ist, dass jede Schicht bestimmte Aufgaben übernimmt und nicht einfach beliebig
+auf alle anderen Schichten zugreifen darf.
+
+Zum Beispiel darf die API unsere BusinessLogic aufrufen. Umgekehrt sollte die BusinessLogic
+aber nichts über unsere Controller wissen müssen.
+
+Das Architekturdiagramm zeigt die erlaubten und verbotenen Abhängigkeiten zwischen den Schichten.
+
+Die durchgezogenen Pfeile zeigen die Abhängigkeiten, die wir ausdrücklich erlauben.
+
+Wenn wir jetzt die verbotenen Zugriffe einblenden, sehen wir auch, welche Abhängigkeiten
+wir in unserer Architektur explizit verhindern wollen.
+
+Diese Grenzen zu ziehen hat einen guten Grund. Wir wollen Verantwortlichkeiten sauber trennen,
+Abhängigkeiten reduzieren und verhindern, dass Änderungen an einer Schicht unnötige Anpassungen
+in anderen Schichten nach sich ziehen.
+
+Das sind grundlegende Prinzipien wie Separation of Concerns und Loose Coupling. Diese sorgen
+dafür, dass unsere Anwendung auch mit wachsender Codebasis wartbar, testbar und erweiterbar bleibt.
+
+Und mit Architekturtests können wir automatisch überprüfen, ob wir diese Prinzipien auch
+tatsächlich einhalten.
+
+  </aside>
+</section>

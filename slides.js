@@ -28,23 +28,18 @@ async function startPresentation() {
 
   const slideFiles = [
     '01-titel.html',
-    '02-das-problem.html',
-    '03-definition.html',
-    '04-architekturregeln.html',
-    '05-frameworks.html',
-    '06-architekturbeispiel-backend.html',
-    '07-test.html',
-    '08-demo.html',
-    '09-ci.html',
-    '10-praxis.html',
-    '11-grenzen.html',
-    '12-einstieg.html',
-    '13-fazit.html',
-    '14-diskussion.html',
-    '15-vertraege.html',
-    '16-modultest.html',
-    '17-module.html',
-    '18-konventionen.html'
+    '02-gliederung.html',
+    '03-architekturbeispiel-backend.html',
+    '04-das-problem.html',
+    '05-definition-architekturtests.html',
+    '06-architekturregeln.html',
+    '07-frameworks.html',
+    '08-test-beispiel.html',
+    '09-architekturtests-in-pipelines.html',
+    '10-superstars-1.html',
+    '10-superstars-2.html',
+    '10-superstars-3.html',
+    '11-take-home-messages.html'
   ];
   const diagramSources = new Map();
 
@@ -99,9 +94,16 @@ async function startPresentation() {
 
   for (const [index, diagram] of [...document.querySelectorAll('.mermaid')].entries()) {
     const source = await loadDiagramSource(diagram);
+    const direction = diagram.dataset.direction;
+    const renderSource = direction
+      ? source.replace(/^(\s*flowchart\s+)\w+/m, `$1${direction}`)
+      : source;
+    if (direction && renderSource === source) {
+      throw new Error(`Could not set the Mermaid direction to ${direction}`);
+    }
     const toggle = [...document.querySelectorAll('[data-hide-forbidden]')]
       .find((control) => control.dataset.hideForbidden === diagram.id);
-    const { svg } = await mermaid.render(`architecture-${index}`, source);
+    const { svg } = await mermaid.render(`architecture-${index}`, renderSource);
     diagram.innerHTML = svg;
     diagram.dataset.rendered = 'true';
 
@@ -129,6 +131,26 @@ async function startPresentation() {
   for (const code of document.querySelectorAll('pre code[data-trim]')) {
     code.textContent = code.textContent.trim();
   }
+
+  function skipFragmentsOnNextSlide(event) {
+    if (event.key !== 'ArrowRight' || !event.shiftKey || event.altKey || event.ctrlKey || event.metaKey) {
+      return;
+    }
+    if (event.target?.closest?.('input, textarea, select, button, [contenteditable="true"]')) {
+      return;
+    }
+
+    const { h } = Reveal.getIndices();
+    if (h >= Reveal.getTotalSlides() - 1) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    Reveal.slide(h + 1, 0);
+  }
+
+  document.addEventListener('keydown', skipFragmentsOnNextSlide, true);
 
   function installPresenterNoteCards(presenterDocument) {
     const notes = presenterDocument.querySelector('.speaker-controls-notes .value');
@@ -171,6 +193,10 @@ async function startPresentation() {
       const presenterDocument = event.source?.document;
       if (!presenterDocument || presenterDocument === document) {
         return;
+      }
+      if (presenterDocument.documentElement.dataset.skipFragmentsKeyboard !== 'true') {
+        presenterDocument.documentElement.dataset.skipFragmentsKeyboard = 'true';
+        presenterDocument.addEventListener('keydown', skipFragmentsOnNextSlide, true);
       }
       if (!presenterDocument.getElementById('presenter-styles')) {
         const stylesheet = presenterDocument.createElement('link');

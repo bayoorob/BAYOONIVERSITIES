@@ -1,0 +1,54 @@
+<section data-timing="120">
+  <p class="eyebrow">
+    Das Problem
+  </p>
+  <h2>
+    Die etablierte Struktur rostet.
+  </h2>
+  <div class="comparison">
+    <div>
+      <h3>
+        Heute
+      </h3>
+      <p>
+        Der <code>Controller</code> ruft den <code>Service</code> auf. Der <code>Service</code> ruft den 
+        <code>DbContext</code> auf.
+      </p>
+    </div>
+    <div class="fragment">
+      <h3>
+        Im nächsten Sprint
+      </h3>
+      <p>
+        Der <code>Controller</code> greift direkt auf den <code>DbContext</code> zu. Geht
+        schneller.
+      </p>
+    </div>
+  </div>
+  <p class="statement fragment">
+    Die Unit-Tests bleiben grün. Die Architektur ist beschädigt.
+  </p>
+  <aside class="notes">
+Wir schauen uns das, gegeben die Backend-Architektur die ich gerade gezeigt habe, nochmal an einem spezifischen Beispiel an.
+Heute haben wir eine schöne, saubere Architektur.
+
+Der Controller ruft den Service auf und der Service greift über den DbContext auf die Datenbank zu.
+
+So weit, so gut.
+
+<PRESS>
+
+Im nächsten Sprint brauchen wir zusätzliche Daten, die unser Service noch nicht bereitstellt.
+
+Aber der DbContext hat sie ja schon. Also injizieren wir einfach den DbContext direkt in den Controller.
+Geht schneller.
+
+<PRESS>
+
+Das Ticket ist fertig, die Unit-Tests sind grün und alle sind glücklich, bis auf den Architekten.
+
+Denn wir haben gerade eine der Architekturregeln verletzt, leider ohne dass es jemand bemerkt.
+
+Diese Abweichungen wollen wir mit Architekturtests automatisch erkennen.
+  </aside>
+</section>

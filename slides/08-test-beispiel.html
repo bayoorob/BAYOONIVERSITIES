@@ -1,0 +1,55 @@
+<section class="code-slide" data-timing="75">
+  <p class="eyebrow">
+    Architekturtest in NetArchTest + xUnit
+  </p>
+  <h2>
+    Die Struktur festnageln.
+  </h2>
+  <pre><code class="language-csharp" data-trim>
+[Fact]
+public void BusinessLogic_Should_Not_Depend_On_Api()
+{
+    var assembly = typeof(OrderService).Assembly;
+
+    var rule = Types.InAssembly(assembly)
+        .That()
+        .ResideInNamespace("Shop.BusinessLogic");
+
+    Assert.NotEmpty(rule.GetTypes());
+
+    var result = rule
+        .ShouldNot()
+        .HaveDependencyOn("Shop.Api").GetResult();
+
+    Assert.True(result.IsSuccessful,
+        "BusinessLogic must not depend on Api.");
+}
+  </code>
+  </pre>
+  <aside class="notes">
+Hier sehen wir einen vollständigen Architekturtest mit NetArchTest und xUnit.
+
+Wir wollen in diesem Fall sicherstellen, dass unsere BusinessLogic keine Abhängigkeiten zur API hat.
+
+Zuerst holen wir uns die Assembly, in der unser OrderService liegt.
+
+Anschließend wählen wir mit NetArchTest alle Typen aus, die im Namespace
+`Shop.BusinessLogic` liegen.
+
+Mit `Assert.NotEmpty` stellen wir sicher, dass wir auch tatsächlich Typen gefunden haben.
+Sonst könnte unser Test erfolgreich durchlaufen, obwohl er überhaupt nichts überprüft.
+
+Der interessante Teil kommt mit `ShouldNot().HaveDependencyOn()`.
+
+Damit legen wir fest, dass keiner dieser Typen eine Abhängigkeit zum Namespace `Shop.Api`
+haben darf.
+
+Zum Schluss prüfen wir mit `Assert.True`, ob die Regel eingehalten wurde.
+
+Falls beispielsweise jemand einen Controller in einem Service referenziert, schlägt der
+Test fehl.
+
+Und damit haben wir eine Architekturregel, die nicht mehr nur irgendwo dokumentiert ist,
+sondern bei jedem Testlauf automatisch überprüft wird.
+  </aside>
+</section>

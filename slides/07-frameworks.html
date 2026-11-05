@@ -1,0 +1,70 @@
+<section data-timing="45">
+  <p class="eyebrow">
+    .NET / Werkzeugwahl
+  </p>
+  <h2>
+    Welche Bibliotheken gibt es?
+  </h2>
+  <table class="framework-table">
+    <thead>
+      <tr>
+        <th>
+          Werkzeug
+        </th>
+        <th>
+          Wofür es sich anbietet
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          NetArchTest.Rules
+        </td>
+        <td>
+          Kompakte Regeln über Typen und Abhängigkeiten
+        </td>
+      </tr>
+      <tr>
+        <td>
+          ArchUnitNET
+        </td>
+        <td>
+          Ein ausführlicheres Modell der Architekturbeziehungen
+        </td>
+      </tr>
+      <tr>
+        <td>
+          .NET Reflection
+        </td>
+        <td>
+          Eigene, eng begrenzte Typkonventionen
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="statement">
+    Heute: NetArchTest + xUnit als Testing Framework
+  </p>
+  <aside class="notes">
+Für Architekturtests gibt es im .NET-Umfeld verschiedene Bibliotheken.
+
+NetArchTest ist eine recht schlanke Lösung, mit der wir Regeln für Typen, Namespaces und
+Abhängigkeiten definieren können in Form von C#-Code.
+
+ArchUnitNET bietet einen etwas umfangreicheren Ansatz und bildet die Beziehungen zwischen
+unseren Klassen und Schichten detaillierter ab.
+
+Alternativ können wir auch die eingebaute .NET Reflection verwenden.
+
+Damit lassen sich ebenfalls Typen und ihre Abhängigkeiten untersuchen. Die eigentliche
+Prüflogik müssten wir allerdings selbst implementieren.
+
+Für unsere Beispiele verwenden wir NetArchTest zusammen mit xUnit als Testing Framework.
+
+Wir können die Tests lokal mit `dotnet test` ausführen und genauso wie unsere Unit-Tests
+in die CI-Pipeline aufnehmen.
+
+Ein Architekturverstoß führt dann schlicht zu einem fehlgeschlagenen Test.
+  </aside>
+</section>

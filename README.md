@@ -1,8 +1,7 @@
 # Architekturtests
 
 Eine deutschsprachige Reveal.js-Präsentation über Architekturtests in .NET und C#.
-Sie umfasst 14 Kernfolien sowie vier optionale Vertiefungen. Die Präsentation und
-eine kleine ausführbare Testdemo liegen direkt im Repository-Root.
+Sie umfasst derzeit 13 Folien; alle Projektdateien liegen direkt im Repository-Root.
 
 ## Start
 
@@ -29,40 +28,16 @@ Port angeben, zum Beispiel `npm start -- -p 4174`.
 | S | Sprecheransicht mit Notizen |
 | B oder Punkt | Bildschirm abdunkeln |
 
-Folie 14 schließt den 20-Minuten-Vortrag mit einer Diskussion ab. Folien 15 bis 18
-sind optionale Vertiefungen. In der Sprecheransicht Pop-ups für die lokale Adresse
-zulassen; die Notizen erscheinen dort, nicht auf der Präsentationsfläche.
-
-## Testdemo
-
-Die Demo benötigt das .NET-10-SDK. Alle Befehle aus dem Repository-Root ausführen.
-Zuerst Pakete wiederherstellen und optional bauen:
-
-```powershell
-dotnet restore demo/ArchitectureDemo.csproj
-dotnet build demo/ArchitectureDemo.csproj --no-restore
-```
-
-Der Test ist zunächst erfolgreich. Danach lässt sich eine echte unerlaubte
-Abhängigkeit zuschalten; dieser Lauf soll fehlschlagen:
-
-```powershell
-dotnet test demo/ArchitectureDemo.csproj --no-restore
-dotnet test demo/ArchitectureDemo.csproj --no-restore -p:ArchitectureViolation=true
-dotnet test demo/ArchitectureDemo.csproj --no-restore
-```
-
-Die Eigenschaft schaltet beim Neubau einen Verstoß von BusinessLogic zu Api zu.
-Darum `--no-build` nicht verwenden. Die Demo ist ein isoliertes Beispiel, keine
-produktive Anwendung.
+In der Sprecheransicht Pop-ups für die lokale Adresse zulassen; die Notizen
+erscheinen dort, nicht auf der Präsentationsfläche.
 
 ## Inhalte bearbeiten
 
-- `slides/` enthält die 18 Folien als einzelne HTML-Dateien.
+- `slides/` enthält die 13 geladenen Folien als einzelne HTML-Dateien.
+- `screenshots/` enthält die Bilder der Architekturtest-Beispiele.
 - `diagrams/` enthält wiederverwendbare Mermaid-Quellen.
 - `slides.js` legt mit `slideFiles` ihre Reihenfolge fest.
 - `slides.css` und `presenter.css` enthalten die Präsentations- und Sprecheransicht-Stile.
-- `demo/` enthält das .NET-Testprojekt.
 
 Zum Ergänzen eine Folien-Datei kopieren und sie an der passenden Stelle in
 `slideFiles` eintragen. Jede Datei enthält genau ein `<section>`-Element mit Inhalt

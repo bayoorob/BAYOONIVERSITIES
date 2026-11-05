@@ -1,0 +1,69 @@
+
+<section class="takehome-slide" data-timing="60">
+  <p class="eyebrow">
+    Fazit / Für die Praxis
+  </p>
+  <h2>
+    Take Home Messages
+  </h2>
+  <ol class="takehome-list">
+    <li class="fragment">
+      <div>
+        <strong>Erst die Basics absichern.</strong>
+        <span>
+          <b>Backend:</b> Namenskonventionen, Schichtengrenzen.
+        </span>
+        <span>
+          <b>Frontend:</b> Namenskonventionen, Schichtengrenzen, HTTP nur in Services, keine gegenseitigen Feature-Imports, etc.
+        </span>
+      </div>
+    </li>
+    <li class="fragment">
+      <div>
+        <strong>Bekannte Fehlerquellen automatisieren.</strong>
+        <span>
+          Migrationen, EF-Core-Konfigurationen und API-Verträge prüfen.
+          Besonders wertvoll sind Regeln, die bereits aufgetretene Fehler verhindern.
+        </span>
+      </div>
+    </li>
+    <li class="fragment">
+      <div>
+        <strong>Regeln gehören in die CI.</strong>
+        <span>
+          Mit dem Anwendungscode versionieren, im Code Review prüfen
+          und Verstöße vor dem Merge erkennen.
+        </span>
+      </div>
+    </li>
+  </ol>
+  <aside class="notes">
+Mein Vorschlag wäre, erstmal die offensichtlichen Dinge abzusichern.
+
+Im Backend sind das Namenskonventionen für Services und Interfaces sowie die Abhängigkeiten
+zwischen Controllern, Services und dem Datenmodell.
+
+Im Frontend gelten ähnliche Prinzipien. Dazu kommen Regeln wie HTTP-Zugriffe nur in den
+vorgesehenen Services und keine gegenseitigen Imports zwischen Features.
+
+<PRESS>
+
+Noch interessanter finde ich Tests, die konkrete Probleme aus der Vergangenheit verhindern.
+
+Wenn uns eine bestimmte Art von Migration schon dreimal die Pipeline zerlegt hat,
+lohnt es sich wahrscheinlich, genau dafür einen Test zu schreiben.
+
+Das muss dann auch kein klassischer Architekturtest sein. Hauptsache, wir verhindern,
+dass uns derselbe Fehler immer wieder Zeit kostet.
+
+<PRESS>
+
+Und zuletzt gehören diese Regeln natürlich in unsere CI-Pipeline.
+
+Sie werden zusammen mit dem Anwendungscode versioniert und Änderungen daran genauso
+im Code Review geprüft.
+
+Mein Fazit: Lieber zehn sinnvolle Regeln, die uns tatsächlich Arbeit ersparen,
+als hundert theoretische, die irgendwann niemand mehr ernst nimmt.
+  </aside>
+</section>

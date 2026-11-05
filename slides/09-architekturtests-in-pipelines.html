@@ -1,0 +1,37 @@
+<section data-timing="90">
+  <p class="eyebrow">
+    Architekturtests im Entwicklungsprozess
+  </p>
+  <h2>
+    Verstöße aufdecken.
+  </h2>
+  <div class="mermaid compact-diagram" role="img" aria-label="Eine Änderung durchläuft Architekturtests und weitere Tests, bevor sie gemergt werden darf.">
+flowchart LR
+  change[Änderung] --> architecture[Architekturtests] --> tests[Weitere Tests] --> merge[Merge]
+  </div>
+  <ul>
+    <li class="fragment">
+      Wie andere Tests ausführen, im Pull Request verpflichtend machen.
+    </li>
+    <li class="fragment">
+      Regeln und Anwendungscode gemeinsam versionieren.
+    </li>
+  </ul>
+  <aside class="notes">
+Architekturtests brauchen keine besondere Infrastruktur.
+
+Sie laufen mit `dotnet test` und lassen sich direkt in unsere bestehende Pipeline aufnehmen.
+
+<PRESS>
+
+Idealerweise machen wir sie über die Branch Policies verpflichtend.
+Ein Architekturverstoß blockiert dann den Merge.
+
+<PRESS>
+
+Die Regeln liegen im selben Repository wie unser Anwendungscode.
+
+Damit werden Architekturänderungen genauso versioniert und im Code Review geprüft
+wie jede andere Änderung auch.
+  </aside>
+</section>
