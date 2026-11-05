@@ -1,0 +1,46 @@
+%%{init: {"flowchart": {"padding": 26, "nodeSpacing": 42, "rankSpacing": 76}}}%%
+flowchart LR
+    subgraph API["Shop.Api"]
+        controller["OrderController"]
+    end
+
+    subgraph DTO["Shop.ApiObjects"]
+        request["OrderRequest"]
+        response["OrderResponse"]
+    end
+
+    subgraph BL["Shop.BusinessLogic"]
+        service["OrderService"]
+    end
+
+    subgraph MODEL["Shop.Model"]
+        context["ShopDbContext"]
+        entity["Order Entity"]
+    end
+
+    controller --> request
+    controller --> response
+    controller --> service
+
+    service --> request
+    service --> response
+    service --> context
+    service --> entity
+
+    context --> entity
+
+    linkStyle 0,1,2,3,4,5,6,7 stroke-width:2.5px
+
+    %% forbidden-start
+    controller -. verboten .-> context
+    controller -. verboten .-> entity
+    context -. verboten .-> service
+
+    linkStyle 8,9,10 stroke:#ff8b89,stroke-width:3px,stroke-dasharray:6 5
+    %% forbidden-end
+
+    classDef normal fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a
+    classDef focus fill:#ddf46b,stroke:#a3c623,color:#15191e
+
+    class controller,request,response,context,entity normal
+    class service focus

@@ -1,26 +1,72 @@
 <section data-timing="60">
-  <p class="eyebrow">Praxis / Regeln aus PLOX und ACOS</p>
-  <h2>Mehr als ein hübsches Schichtenbild.</h2>
+  <p class="eyebrow">
+    Praxis / Regeln aus PLOX und ACOS
+  </p>
+  <h2>
+    Mehr als ein hübsches Schichtenbild.
+  </h2>
   <div class="comparison">
-    <div><h3>PLOX</h3><ul><li>Controller ohne DbContext</li><li>Historisierung für Nicht-Logging-Entities</li><li>Explizite statt erratener Fremdschlüssel</li></ul></div>
-    <div><h3>ACOS</h3><ul><li>Controller ohne konkrete Services</li><li>Services mit passendem Interface</li><li>Einheitliche API-Rückgabetypen</li></ul></div>
+    <div>
+      <h3>
+        PLOX
+      </h3>
+      <ul>
+        <li>
+          Controller ohne DbContext
+        </li>
+        <li>
+          Historisierung für
+          Nicht-Logging-Entities
+        </li>
+        <li>
+          Explizite statt erratener Fremdschlüssel
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>
+        ACOS
+      </h3>
+      <ul>
+        <li>
+          Controller ohne konkrete Services
+        </li>
+        <li>
+          Services mit passendem
+          Interface
+        </li>
+        <li>
+          Einheitliche API-Rückgabetypen
+        </li>
+      </ul>
+    </div>
   </div>
-  <p class="statement">Das Review diskutiert die Ausnahme. Nicht zum 37. Mal dieselbe Regel.</p>
-  <p class="footnote">Quellcode geprüft, Tests nicht ausgeführt. Manche PLOX-Modelltests verwenden einen Datenbank-Testcontainer.</p>
+  <p class="statement">
+    Das Review diskutiert die Ausnahme. Nicht zum 37. Mal dieselbe Regel.
+  </p>
+  <p class="footnote">
+    Quellcode geprüft, Tests nicht ausgeführt. Manche PLOX-Modelltests verwenden
+    einen Datenbank-Testcontainer.
+  </p>
   <aside class="notes">
     Diese Beispiele stehen bereits in unseren Repositories.
 
-    PLOX prüft neben der Controller-Schicht auch das EF-Modell: Nicht-Logging-Entities müssen historisiert sein, und Fremdschlüssel sollen explizit konfiguriert werden, statt nur durch Konvention zu entstehen.
+    PLOX prüft neben der Controller-Schicht auch das EF-Modell: Nicht-Logging-Entities müssen
+    historisiert sein, und Fremdschlüssel sollen explizit konfiguriert werden, statt nur durch
+    Konvention zu entstehen.
 
     Das sind konkrete Entscheidungen mit fachlichen Folgen.
 
     Eine versehentlich nicht historisierte Tabelle ist kein Schönheitsfehler im Klassendiagramm.
 
-    ACOS prüft unter anderem die Trennung von Controllern und konkreten Services sowie Konventionen für Serviceverträge und Rückgabetypen.
+    ACOS prüft unter anderem die Trennung von Controllern und konkreten Services sowie Konventionen
+    für Serviceverträge und Rückgabetypen.
 
-    Die Tests machen Erwartungen für neue Teammitglieder sichtbar und nehmen wiederkehrende Kontrollen aus dem Review.
+    Die Tests machen Erwartungen für neue Teammitglieder sichtbar und nehmen wiederkehrende
+    Kontrollen aus dem Review.
 
-    Das spart keine Architekturdiskussion, sondern verschiebt sie an die richtige Stelle: zur Entscheidung oder zur bewussten Ausnahme.
+    Das spart keine Architekturdiskussion, sondern verschiebt sie an die richtige Stelle: zur
+    Entscheidung oder zur bewussten Ausnahme.
 
     Die Regeltexte sind trotzdem kein Beweis ihrer vollständigen Abdeckung.
 

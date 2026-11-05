@@ -1,0 +1,30 @@
+<section data-timing="45">
+  <p class="eyebrow">
+    Architekturbeispiel Backend / Wer kennt wen?
+  </p>
+  <!-- <h2>BusinessLogic braucht keinen Rückweg.</h2> -->
+  <div class="architecture-controls">
+    <label class="architecture-toggle" for="hide-forbidden-accesses"><input id="hide-forbidden-accesses" type="checkbox" data-hide-forbidden="shop-architecture-diagram" aria-controls="shop-architecture-diagram" checked><span>Verbotene Zugriffe ausblenden</span></label>
+  </div>
+  <div id="shop-architecture-diagram" class="mermaid architecture-diagram" data-src="diagrams/shop-architecture.mmd" role="img" aria-label="Abhängigkeiten zwischen Shop.Api, Shop.ApiObjects, Shop.BusinessLogic und Shop.Model.">
+  </div>
+  <p>Durchgezogene Pfeile zeigen erlaubte Typabhängigkeiten, gestrichelte Pfeile Verstöße.</p>
+  <aside class="notes">
+    Die API enthält den Controller.
+
+    Request und Response liegen in Shop.ApiObjects.
+
+    Der Controller verwendet diese Verträge und ruft den OrderService auf.
+
+    Der Service kennt außerdem die Verträge und Persistenztypen, die er für seine Arbeit benötigt.
+
+    Die rot gestrichelten Pfeile markieren verbotene Abhängigkeiten.
+
+    Mit der Checkbox lassen sie sich ausblenden, damit die erlaubte Struktur allein sichtbar bleibt.
+
+    Der Pfeil steht für eine statische Typabhängigkeit, nicht für einen Methodenaufruf zur Laufzeit.
+
+    Die Demo nutzt eine Assembly mit getrennten Namespaces, damit der Test einen Verstoß vor einem
+    Projektzyklus erkennt.
+  </aside>
+</section>

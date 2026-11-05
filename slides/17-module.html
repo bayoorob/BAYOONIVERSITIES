@@ -1,6 +1,10 @@
 <section data-timing="0" data-appendix>
-  <p class="eyebrow">Vertiefung / Erlaubt ist eine Entscheidung</p>
-  <h2>Verträge ja. Fremde Persistenz nein.</h2>
+  <p class="eyebrow">
+    Vertiefung / Erlaubt ist eine Entscheidung
+  </p>
+  <h2>
+    Verträge ja. Fremde Persistenz nein.
+  </h2>
   <div class="mermaid scope-diagram" role="img" aria-label="Orders.Application darf Orders.Domain und Customers.Contracts verwenden, aber nicht Customers.Infrastructure.">
 flowchart LR
   orders[Orders.Application] -->|erlaubt| domain[Orders.Domain]
@@ -12,7 +16,9 @@ flowchart LR
   class persistence blocked
   linkStyle 2 stroke:#ff8b89,stroke-width:3px,stroke-dasharray:6 5
   </div>
-  <p class="statement">Ein zugänglicher Typ ist nicht automatisch ein sinnvoller Typverweis.</p>
+  <p class="statement">
+    Ein zugänglicher Typ ist nicht automatisch ein sinnvoller Typverweis.
+  </p>
   <aside class="notes">
     Die drei Pfeile zeigen unterschiedliche Entscheidungen.
 
@@ -26,9 +32,11 @@ flowchart LR
 
     Der Architekturtest kann darüber hinaus die engere Regel des Teams absichern.
 
-    Wenn Orders zusätzliche Kundendaten benötigt, erweitern wir einen Vertrag oder ändern die Modulgrenze bewusst.
+    Wenn Orders zusätzliche Kundendaten benötigt, erweitern wir einen Vertrag oder ändern die
+    Modulgrenze bewusst.
 
-    Ein direkter Zugriff auf die Datenbank eines anderen Moduls spart diese Entscheidung nur scheinbar.
+    Ein direkter Zugriff auf die Datenbank eines anderen Moduls spart diese Entscheidung nur
+    scheinbar.
 
     Er trifft sie ebenfalls, nur ohne sie so zu nennen.
   </aside>

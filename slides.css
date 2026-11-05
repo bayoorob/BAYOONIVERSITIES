@@ -47,6 +47,7 @@ body { background: var(--paper); }
 .reveal .compact-table { font-size: 22px; }
 .reveal .compact-table td, .reveal .compact-table th { padding-block: 12px; }
 .reveal code { font-family: var(--font-mono); font-size: .86em; }
+.reveal code:not(pre code) { padding: .06em .28em; border: 1px solid var(--line); border-radius: 3px; background: #252c35; color: var(--ink); white-space: nowrap; }
 .reveal pre { margin: 22px 0; width: 100%; box-shadow: none; font-family: var(--font-mono); font-size: 23px; line-height: 1.35; }
 .reveal pre code { max-height: none; padding: 22px 26px; border-radius: 3px; font-size: inherit; background: #1b2027; color: #ecedf1; tab-size: 4; }
 .reveal .code-slide h2 { margin-bottom: 22px; }
@@ -57,8 +58,16 @@ body { background: var(--paper); }
 .mermaid { width: 100%; display: flex; justify-content: center; align-items: center; margin: 16px 0; }
 .mermaid svg { display: block; width: 100%; height: 100%; max-width: 100% !important; overflow: visible; }
 .mermaid svg, .mermaid svg * { filter: none !important; }
-.mermaid svg .node rect.label-container { stroke: #a9b2c0 !important; stroke-width: 1.5px !important; rx: 8px; ry: 8px; }
-.architecture-diagram { height: 265px; }
+.mermaid svg .node rect.label-container { stroke: #a9b2c0 !important; stroke-width: 2.5px !important; stroke-dasharray: none !important; rx: 12px; ry: 12px; }
+.architecture-diagram svg .node.normal rect.label-container { stroke: #3b82f6 !important; }
+.architecture-diagram svg .node.focus rect.label-container { stroke: #a3c623 !important; }
+.mermaid svg .cluster rect { stroke: #8591a5 !important; stroke-width: 1.75px !important; stroke-dasharray: none !important; rx: 6px; ry: 6px; }
+.architecture-controls { display: flex; justify-content: flex-end; min-height: 28px; margin-top: -18px; }
+.architecture-toggle { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 18px; cursor: pointer; }
+.architecture-toggle input { width: 20px; height: 20px; margin: 0; accent-color: var(--accent); }
+.architecture-toggle input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.architecture-diagram { height: 365px; }
+#shop-architecture-diagram.hide-forbidden .forbidden-access { opacity: 0 !important; }
 .compact-diagram { height: 108px; }
 .scope-diagram { height: 310px; }
 .title-diagram { height: 112px; margin: 28px 0 26px; }

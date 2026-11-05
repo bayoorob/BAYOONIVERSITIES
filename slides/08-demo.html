@@ -1,6 +1,10 @@
 <section class="code-slide" data-timing="135">
-  <p class="eyebrow">Demo / Grün → Rot → Grün</p>
-  <h2>„Das merkt doch keiner.“ Doch.</h2>
+  <p class="eyebrow">
+    Demo / Grün → Rot → Grün
+  </p>
+  <h2>
+    „Das merkt doch keiner.“ Doch.
+  </h2>
   <pre><code class="language-csharp" data-trim>
 namespace Shop.BusinessLogic;
 
@@ -8,18 +12,30 @@ public sealed class OrderService
 {
     public Shop.Api.ApiDiagnostics? Diagnostics { get; set; }
 }
-  </code></pre>
-  <div class="terminal-output"><span class="bad">FAIL</span> BusinessLogic_Should_Not_Depend_On_Api<br>BusinessLogic must not depend on Api.</div>
-  <p class="statement">Grün prüfen. Typreferenz ergänzen. Rot sehen. Referenz entfernen. Wieder grün.</p>
-  <p class="footnote">Ein unbenutztes using ist kein Gegenbeweis. Die Eigenschaft erzeugt eine echte Typabhängigkeit.</p>
+  </code>
+  </pre>
+  <div class="terminal-output">
+    <span class="bad">FAIL</span> BusinessLogic_Should_Not_Depend_On_Api<br>BusinessLogic
+    must not depend on Api.
+  </div>
+  <p class="statement">
+    Grün prüfen. Typreferenz ergänzen. Rot sehen. Referenz entfernen. Wieder
+    grün.
+  </p>
+  <p class="footnote">
+    Ein unbenutztes using ist kein Gegenbeweis. Die Eigenschaft erzeugt eine echte
+    Typabhängigkeit.
+  </p>
   <aside class="notes">
     Die Demo startet mit dem normalen Testlauf.
 
     Die Regel ist grün.
 
-    Anschließend aktivieren wir eine zusätzliche Eigenschaft im OrderService: Ihr Typ kommt aus Shop.Api.
+    Anschließend aktivieren wir eine zusätzliche Eigenschaft im OrderService: Ihr Typ kommt aus
+    Shop.Api.
 
-    Das ist bewusst eine echte Typverwendung und kein unbenutztes using, das der Compiler möglicherweise gar nicht in die Assembly übernimmt.
+    Das ist bewusst eine echte Typverwendung und kein unbenutztes using, das der Compiler
+    möglicherweise gar nicht in die Assembly übernimmt.
 
     Der Anwendungscode kann weiterhin kompilieren, aber der Architekturtest wird rot.
 
@@ -33,12 +49,16 @@ public sealed class OrderService
 
     Der mittlere Lauf soll fehlschlagen; das ist der Nachweis, dass die Regel überhaupt anschlägt.
 
-    Wenn wir die Eigenschaft entfernen, aber der Test rot bleibt, haben wir noch keine erfolgreiche Demo, sondern einen zusätzlichen Fehler.
+    Wenn wir die Eigenschaft entfernen, aber der Test rot bleibt, haben wir noch keine erfolgreiche
+    Demo, sondern einen zusätzlichen Fehler.
 
-    Im Alltag reicht diese Probe einmal beim Einführen einer Regel und nach wesentlichen Änderungen ihres Scopes.
+    Im Alltag reicht diese Probe einmal beim Einführen einer Regel und nach wesentlichen Änderungen
+    ihres Scopes.
 
-    Sie beantwortet die entscheidende Frage: Findet der Test die Verletzung, wegen der wir ihn überhaupt geschrieben haben?
+    Sie beantwortet die entscheidende Frage: Findet der Test die Verletzung, wegen der wir ihn
+    überhaupt geschrieben haben?
 
-    Die rote Ausgabe auf der Folie ist schematisch und dient auch als Ersatz, falls die Live-Umgebung gerade beschlossen hat, selbst Vortrag zu halten.
+    Die rote Ausgabe auf der Folie ist schematisch und dient auch als Ersatz, falls die
+    Live-Umgebung gerade beschlossen hat, selbst Vortrag zu halten.
   </aside>
 </section>

@@ -1,42 +1,76 @@
 <section data-timing="120">
-        <p class="eyebrow">01 / Das Problem</p>
-        <h2>„Nur kurz“ bleibt erstaunlich lange.</h2>
-        <div class="comparison">
-          <div><h3>Im Diagramm</h3><p>Der Controller ruft den Service auf. Der Service kennt das Model.</p><p class="status good">Die Zuständigkeiten sind klar.</p></div>
-          <div><h3>Im nächsten Sprint</h3><p>Der Controller greift direkt auf den DbContext zu. Geht schneller.</p><p class="status bad">Bis jemand die Persistenz ändert.</p></div>
-        </div>
-        <p class="statement">Der Unit-Test bleibt grün. Er war nicht für die Architektur zuständig.</p>
-        <aside class="notes">
-          Ein Controller braucht ein zusätzliches Feld.
+  <p class="eyebrow">
+    Das Problem
+  </p>
+  <h2>
+    Die etablierte Struktur rostet.
+  </h2>
+  <div class="comparison">
+    <div>
+      <h3>
+        Heute
+      </h3>
+      <p>
+        Der <code>Controller</code> ruft den <code>Service</code> auf. Der <code>Service</code> ruft den 
+        <code>DbContext</code> auf.
+      </p>
+      <p class="status good">
+        Die Zuständigkeiten sind klar.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Im nächsten Sprint
+      </h3>
+      <p>
+        Der <code>Controller</code> greift direkt auf den <code>DbContext</code> zu. Geht
+        schneller.
+      </p>
+      <p class="status bad">
+        Bis jemand die Persistenz ändert.
+      </p>
+    </div>
+  </div>
+  <p class="statement">
+    Der Unit-Test bleibt grün. Er war nicht für die Architektur zuständig.
+  </p>
+  <aside class="notes">
+    Ein Controller braucht ein zusätzliches Feld.
 
-          Der zuständige Service liefert es noch nicht, der DbContext schon.
+    Der zuständige Service liefert es noch nicht, der DbContext schon.
 
-          Also wird der Context direkt injiziert.
+    Also wird der Context direkt injiziert.
 
-          Die Tests laufen, das Ticket ist fertig, und niemand hat absichtlich eine neue Architektur beschlossen.
+    Die Tests laufen, das Ticket ist fertig, und niemand hat absichtlich eine neue Architektur
+    beschlossen.
 
-          Trotzdem gibt es jetzt einen zweiten Datenzugriffspfad.
+    Trotzdem gibt es jetzt einen zweiten Datenzugriffspfad.
 
-          Beim nächsten ähnlichen Ticket wird dieser Controller zum Beispiel dafür, wie man es hier offenbar macht.
+    Beim nächsten ähnlichen Ticket wird dieser Controller zum Beispiel dafür, wie man es hier
+    offenbar macht.
 
-          Architektur erodiert selten durch einen spektakulär falschen Entwurf.
+    Architektur erodiert selten durch einen spektakulär falschen Entwurf.
 
-          Sie verändert sich durch viele einzeln plausible Entscheidungen.
+    Sie verändert sich durch viele einzeln plausible Entscheidungen.
 
-          Das Diagramm im Wiki zeigt währenddessen unverändert den Zustand, auf den wir uns einmal geeinigt haben.
+    Das Diagramm im Wiki zeigt währenddessen unverändert den Zustand, auf den wir uns einmal
+    geeinigt haben.
 
-          Code Reviews können solche Änderungen erkennen, aber der Reviewer müsste alle relevanten Regeln kennen und bei jedem Diff daran denken.
+    Code Reviews können solche Änderungen erkennen, aber der Reviewer müsste alle relevanten
+    Regeln kennen und bei jedem Diff daran denken.
 
-          Das ist bei wechselnden Teams und vielen parallelen Änderungen eine ziemlich anspruchsvolle Hintergrundaufgabe.
+    Das ist bei wechselnden Teams und vielen parallelen Änderungen eine ziemlich
+    anspruchsvolle Hintergrundaufgabe.
 
-          Der Unit-Test ist dabei nicht kaputt.
+    Der Unit-Test ist dabei nicht kaputt.
 
-          Er bestätigt korrekt, dass der Endpunkt die erwarteten Daten liefert.
+    Er bestätigt korrekt, dass der Endpunkt die erwarteten Daten liefert.
 
-          Die Frage, aus welcher Schicht diese Daten kommen dürfen, hat ihm nur niemand gestellt.
+    Die Frage, aus welcher Schicht diese Daten kommen dürfen, hat ihm nur niemand gestellt.
 
-          Genau für diese zweite Frage brauchen wir einen eigenen Check.
+    Genau für diese zweite Frage brauchen wir einen eigenen Check.
 
-          Nicht weil Entwickler unzuverlässig wären, sondern weil wiederkehrende, mechanisch prüfbare Regeln eine schlechte Verwendung menschlicher Aufmerksamkeit sind.
-        </aside>
-      </section>
+    Nicht weil Entwickler unzuverlässig wären, sondern weil wiederkehrende, mechanisch
+    prüfbare Regeln eine schlechte Verwendung menschlicher Aufmerksamkeit sind.
+  </aside>
+</section>

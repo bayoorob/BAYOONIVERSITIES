@@ -1,27 +1,80 @@
 <section data-timing="120">
-  <p class="eyebrow">Regeln / Nicht nur Klassen nachzählen</p>
-  <h2>Was soll morgen noch unabhängig sein?</h2>
+  <p class="eyebrow">
+    Welche Regeln gelten in meiner Applikation?
+  </p>
+  <h2>
+    Was soll morgen noch unabhängig sein?
+  </h2>
   <table class="compact-table">
-    <thead><tr><th>Regel</th><th>Geschützte Entscheidung</th></tr></thead>
+    <thead>
+      <tr>
+        <th>
+          Regel
+        </th>
+        <th>
+          Geschützte Entscheidung
+        </th>
+      </tr>
+    </thead>
     <tbody>
-      <tr><td>BusinessLogic kennt keine API-Typen.</td><td>Fachlogik ohne HTTP-Schicht</td></tr>
-      <tr><td>Controller kennen keinen DbContext.</td><td>Datenzugriff bleibt im Service.</td></tr>
-      <tr><td>Module bilden keine Zyklen.</td><td>Änderungen bleiben lokal.</td></tr>
-      <tr><td>Fremde Implementierungen bleiben tabu.</td><td>Verträge statt interner Details</td></tr>
-      <tr><td>Handler folgen einer Namenskonvention.</td><td>Einstiegspunkte bleiben auffindbar.</td></tr>
+      <tr>
+        <td>
+          BusinessLogic kennt keine API-Typen.
+        </td>
+        <td>
+          Fachlogik ohne HTTP-Schicht
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Controller kennen keinen DbContext.
+        </td>
+        <td>
+          Datenzugriff bleibt im Service.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Module bilden keine Zyklen.
+        </td>
+        <td>
+          Änderungen bleiben lokal.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Fremde Implementierungen bleiben tabu.
+        </td>
+        <td>
+          Verträge statt interner Details
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Handler folgen einer Namenskonvention.
+        </td>
+        <td>
+          Einstiegspunkte bleiben auffindbar.
+        </td>
+      </tr>
     </tbody>
   </table>
-  <p class="footnote">Nicht jede Konvention verdient einen Merge-Blocker. Die teure Kopplung zuerst.</p>
+  <p class="footnote">
+    Nicht jede Konvention verdient einen Merge-Blocker. Die teure Kopplung zuerst.
+  </p>
   <aside class="notes">
     Die wichtigste Frage ist nicht, welche Regeln die Bibliothek mitbringt.
 
     Sie lautet: Welche Änderung wollen wir weiterhin unabhängig durchführen können?
 
-    Wenn BusinessLogic keine API-Typen kennt, können wir die HTTP-Schicht ersetzen oder die Fachlogik in einem anderen Prozess verwenden.
+    Wenn BusinessLogic keine API-Typen kennt, können wir die HTTP-Schicht ersetzen oder die
+    Fachlogik in einem anderen Prozess verwenden.
 
-    Wenn Controller nicht direkt auf den DbContext zugreifen, gibt es einen vorgesehenen Ort für Datenzugriff und fachliche Prüfungen.
+    Wenn Controller nicht direkt auf den DbContext zugreifen, gibt es einen vorgesehenen Ort für
+    Datenzugriff und fachliche Prüfungen.
 
-    Bei Modulzyklen wird die Grenze besonders deutlich: Wenn A von B und B von A abhängt, müssen wir die beiden irgendwann gemeinsam verstehen, testen oder ändern.
+    Bei Modulzyklen wird die Grenze besonders deutlich: Wenn A von B und B von A abhängt, müssen wir
+    die beiden irgendwann gemeinsam verstehen, testen oder ändern.
 
     Zyklen zwischen normalen Projektverweisen verhindert bereits der .NET-Build.
 
@@ -29,20 +82,24 @@
 
     Dort kann eine zusätzliche Graphprüfung helfen.
 
-    Eine weitere Regel kann fremde Implementierungen verbieten und nur einen ausdrücklich vereinbarten Vertrag zulassen.
+    Eine weitere Regel kann fremde Implementierungen verbieten und nur einen ausdrücklich
+    vereinbarten Vertrag zulassen.
 
     Ein Interface allein macht eine Abhängigkeit aber noch nicht sinnvoll.
 
     Auch das Interface kann die falsche Grenze überschreiten.
 
-    Namenskonventionen sind ebenfalls prüfbar, etwa für Handler, die über ein Suffix gefunden werden.
+    Namenskonventionen sind ebenfalls prüfbar, etwa für Handler, die über ein Suffix gefunden
+    werden.
 
     Sie stehen hier absichtlich am Ende.
 
-    Wenn das Team seine Energie zunächst in zwölf Suffix-Regeln investiert und der Controller weiter SQL zusammenbaut, ist die Priorität etwas verrutscht.
+    Wenn das Team seine Energie zunächst in zwölf Suffix-Regeln investiert und der Controller weiter
+    SQL zusammenbaut, ist die Priorität etwas verrutscht.
 
     Jede Regel braucht einen Grund.
 
-    Sonst automatisieren wir nur die persönlichen Vorlieben der Person, die zuerst das Testprojekt angelegt hat.
+    Sonst automatisieren wir nur die persönlichen Vorlieben der Person, die zuerst das Testprojekt
+    angelegt hat.
   </aside>
 </section>

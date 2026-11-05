@@ -32,7 +32,7 @@ async function startPresentation() {
     '03-definition.html',
     '04-architekturregeln.html',
     '05-frameworks.html',
-    '06-schichten.html',
+    '06-architekturbeispiel-backend.html',
     '07-test.html',
     '08-demo.html',
     '09-ci.html',
@@ -46,6 +46,43 @@ async function startPresentation() {
     '17-module.html',
     '18-konventionen.html'
   ];
+  const diagramSources = new Map();
+
+  async function loadDiagramSource(diagram) {
+    const sourcePath = diagram.dataset.src;
+    if (!sourcePath) {
+      return diagram.textContent;
+    }
+    if (!diagramSources.has(sourcePath)) {
+      diagramSources.set(sourcePath, fetch(sourcePath).then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load diagram ${sourcePath} (HTTP ${response.status})`);
+        }
+        return response.text();
+      }));
+    }
+    return diagramSources.get(sourcePath);
+  }
+
+  function getMarkedEdgeIndexes(source, markerName) {
+    const startMarker = `%% ${markerName}-start`;
+    const endMarker = `%% ${markerName}-end`;
+    const start = source.indexOf(startMarker);
+    const end = source.indexOf(endMarker);
+    if (start < 0 || end < start) {
+      throw new Error(`Diagram is missing the ${markerName} section markers`);
+    }
+    const sectionStart = source.lastIndexOf('\n', start) + 1;
+    const sectionEnd = source.lastIndexOf('\n', end);
+    const countEdges = (text) => (text.match(/(?:-->|-\.->|\.->|==>|--[ox]|<--|<-.|<==|~~~)/g) || []).length;
+    const firstEdge = countEdges(source.slice(0, sectionStart));
+    const edgeCount = countEdges(source.slice(sectionStart, sectionEnd));
+    if (edgeCount === 0) {
+      throw new Error(`Diagram has no edges in the ${markerName} section`);
+    }
+    return Array.from({ length: edgeCount }, (_, index) => firstEdge + index);
+  }
+
   const slides = await Promise.all(slideFiles.map(async (filename) => {
     const response = await fetch(`slides/${filename}`);
     if (!response.ok) {
@@ -61,13 +98,65 @@ async function startPresentation() {
   document.querySelector('.slides').prepend(...slides);
 
   for (const [index, diagram] of [...document.querySelectorAll('.mermaid')].entries()) {
-    const { svg } = await mermaid.render(`architecture-${index}`, diagram.textContent);
+    const source = await loadDiagramSource(diagram);
+    const toggle = [...document.querySelectorAll('[data-hide-forbidden]')]
+      .find((control) => control.dataset.hideForbidden === diagram.id);
+    const { svg } = await mermaid.render(`architecture-${index}`, source);
     diagram.innerHTML = svg;
     diagram.dataset.rendered = 'true';
+
+    if (toggle) {
+      const edgePaths = [...diagram.querySelectorAll('.edgePaths path')];
+      const forbiddenIndexes = getMarkedEdgeIndexes(source, 'forbidden');
+      const forbiddenPaths = forbiddenIndexes.map((edgeIndex) => edgePaths[edgeIndex]);
+      const forbiddenLabels = [...diagram.querySelectorAll('.edgeLabel')]
+        .filter((label) => label.textContent.trim() === 'verboten');
+      if (forbiddenPaths.some((path) => !path) || forbiddenLabels.length !== forbiddenIndexes.length) {
+        throw new Error('Could not locate all forbidden edges in the rendered diagram');
+      }
+
+      for (const element of [...forbiddenPaths, ...forbiddenLabels]) {
+        element.classList.add('forbidden-access');
+      }
+      const updateForbiddenVisibility = () => {
+        diagram.classList.toggle('hide-forbidden', toggle.checked);
+      };
+      toggle.addEventListener('change', updateForbiddenVisibility);
+      updateForbiddenVisibility();
+    }
   }
 
   for (const code of document.querySelectorAll('pre code[data-trim]')) {
     code.textContent = code.textContent.trim();
+  }
+
+  function installPresenterNoteCards(presenterDocument) {
+    const notes = presenterDocument.querySelector('.speaker-controls-notes .value');
+    if (!notes || notes.dataset.sentenceCards === 'true') {
+      return;
+    }
+    notes.dataset.sentenceCards = 'true';
+
+    let observer;
+    const renderNotes = () => {
+      const sentences = notes.textContent
+        .split(/\n\s*\n/)
+        .map((sentence) => sentence.trim())
+        .filter(Boolean);
+
+      observer.disconnect();
+      notes.replaceChildren(...sentences.map((sentence) => {
+        const card = presenterDocument.createElement('p');
+        card.className = 'note-sentence';
+        card.textContent = sentence;
+        return card;
+      }));
+      observer.observe(notes, { childList: true, subtree: true, characterData: true });
+    };
+
+    observer = new presenterDocument.defaultView.MutationObserver(renderNotes);
+    observer.observe(notes, { childList: true, subtree: true, characterData: true });
+    renderNotes();
   }
 
   window.addEventListener('message', (event) => {
@@ -80,14 +169,17 @@ async function startPresentation() {
         return;
       }
       const presenterDocument = event.source?.document;
-      if (!presenterDocument || presenterDocument === document || presenterDocument.getElementById('presenter-styles')) {
+      if (!presenterDocument || presenterDocument === document) {
         return;
       }
-      const stylesheet = presenterDocument.createElement('link');
-      stylesheet.id = 'presenter-styles';
-      stylesheet.rel = 'stylesheet';
-      stylesheet.href = new URL('presenter.css', location.href).href;
-      presenterDocument.head.append(stylesheet);
+      if (!presenterDocument.getElementById('presenter-styles')) {
+        const stylesheet = presenterDocument.createElement('link');
+        stylesheet.id = 'presenter-styles';
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = new URL('presenter.css', location.href).href;
+        presenterDocument.head.append(stylesheet);
+      }
+      installPresenterNoteCards(presenterDocument);
     } catch {
       return;
     }

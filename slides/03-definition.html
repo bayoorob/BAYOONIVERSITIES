@@ -1,26 +1,58 @@
 <section data-timing="120">
-  <p class="eyebrow">Begriff / Struktur statt Verhalten</p>
-  <h2>Andere Frage. Gleicher Testlauf.</h2>
+  <p class="eyebrow">
+    Was sind Architekturtests?
+  </p>
+  <h2>
+    Struktur prüfen, statt Verhalten.
+  </h2>
   <div class="comparison">
-    <div><h3>Unit-Test</h3><p>Berechnet der Service den richtigen Preis?</p><p class="footnote">Verhalten für konkrete Eingaben</p></div>
-    <div><h3>Architekturtest</h3><p>Darf dieser Service überhaupt den Controller kennen?</p><p class="footnote">Struktur und Abhängigkeitsrichtung</p></div>
+    <div>
+      <h3>
+        Unit-Test
+      </h3>
+      <p>
+        Berechnet der Service den richtigen Preis?
+      </p>
+      <p class="footnote">
+        Testet Verhalten
+        für konkrete Eingaben
+      </p>
+    </div>
+    <div>
+      <h3>
+        Architekturtest
+      </h3>
+      <p>
+        Darf dieser Service überhaupt den Controller kennen?
+      </p>
+      <p class="footnote">
+        Testet Struktur
+        und Abhängigkeitsrichtung
+      </p>
+    </div>
   </div>
-  <div class="rule-equation"><span>Welche Typen?</span><b>+</b><span>Welche Regel?</span><b>+</b><span>Wann prüfen?</span></div>
-  <p class="statement">Architekturentscheidungen werden zu ausführbaren Regeln.</p>
+  <!-- <div class="rule-equation"><span>Welche Typen?</span><b>+</b><span>Welche Regel?</span><b>+</b><span>Wann
+    prüfen?</span></div> -->
+  <p class="statement">
+    Architekturentscheidungen werden zu ausführbaren Regeln.
+  </p>
   <aside class="notes">
-    Ein Architekturtest untersucht den Aufbau einer Anwendung: Welche Typen verwenden welche anderen Typen?
+    Ein Architekturtest untersucht den Aufbau einer Anwendung: Welche Typen verwenden welche anderen
+    Typen?
 
     Welche Klassen implementieren ein Interface?
 
     Wo liegen die öffentlichen Einstiegspunkte?
 
-    Ein Unit-Test untersucht dagegen typischerweise das Verhalten eines begrenzten Bausteins für konkrete Eingaben.
+    Ein Unit-Test untersucht dagegen typischerweise das Verhalten eines begrenzten Bausteins für
+    konkrete Eingaben.
 
     Beides kann im selben Testprojekt und im selben Testlauf passieren.
 
     Der Unterschied liegt in der Frage, nicht unbedingt im Werkzeug.
 
-    Ein Service kann fachlich korrekt rechnen und gleichzeitig eine Abhängigkeit besitzen, die wir ausdrücklich nicht wollen.
+    Ein Service kann fachlich korrekt rechnen und gleichzeitig eine Abhängigkeit besitzen, die wir
+    ausdrücklich nicht wollen.
 
     Für eine brauchbare Architekturregel müssen drei Dinge klar sein.
 
@@ -34,7 +66,8 @@
 
     BusinessLogic darf keine Typen aus dem API-Namespace verwenden schon.
 
-    Das ist nebenbei ein nützlicher Test für unsere Architekturgespräche: Wenn wir die Entscheidung nicht konkret formulieren können, wird sie auch durch mehr Pfeile im Diagramm nicht eindeutiger.
+    Das ist nebenbei ein nützlicher Test für unsere Architekturgespräche: Wenn wir die Entscheidung
+    nicht konkret formulieren können, wird sie auch durch mehr Pfeile im Diagramm nicht eindeutiger.
 
     Der Test ersetzt weder Unit- noch Integrations- noch End-to-End-Tests.
 

@@ -1,27 +1,70 @@
 <section data-timing="60">
-  <p class="eyebrow">Grenzen / Was grün nicht bedeutet</p>
-  <h2>Auch schlechte Architektur kann grün sein.</h2>
+  <p class="eyebrow">
+    Grenzen / Was grün nicht bedeutet
+  </p>
+  <h2>
+    Auch schlechte Architektur kann grün sein.
+  </h2>
   <div class="comparison">
-    <div><h3>Der Test sieht</h3><ul><li>Die ausgewählten Typen</li><li>Die formulierten Beziehungen</li><li>Den konfigurierten Prüfumfang</li></ul></div>
-    <div><h3>Der Test beurteilt nicht</h3><ul><li>Ob die Architektur sinnvoll ist</li><li>Jede dynamische Laufzeitkopplung</li><li>Ob eine Ausnahme fachlich nötig ist</li></ul></div>
+    <div>
+      <h3>
+        Der Test sieht
+      </h3>
+      <ul>
+        <li>
+          Die ausgewählten Typen
+        </li>
+        <li>
+          Die formulierten Beziehungen
+        </li>
+        <li>
+          Den
+          konfigurierten Prüfumfang
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>
+        Der Test beurteilt nicht
+      </h3>
+      <ul>
+        <li>
+          Ob die Architektur sinnvoll ist
+        </li>
+        <li>
+          Jede
+          dynamische Laufzeitkopplung
+        </li>
+        <li>
+          Ob eine Ausnahme fachlich nötig ist
+        </li>
+      </ul>
+    </div>
   </div>
-  <p class="footnote">Reflection über Strings, DI-Verdrahtung und HTTP-Verträge brauchen gegebenenfalls andere Prüfungen.</p>
+  <p class="footnote">
+    Reflection über Strings, DI-Verdrahtung und HTTP-Verträge brauchen
+    gegebenenfalls andere Prüfungen.
+  </p>
   <aside class="notes">
-    Der Test kann eine Entscheidung zuverlässig bewahren und trotzdem die falsche Entscheidung bewahren.
+    Der Test kann eine Entscheidung zuverlässig bewahren und trotzdem die falsche Entscheidung
+    bewahren.
 
     Grün heißt nur, dass die formulierte Regel für die ausgewählten Typen erfüllt ist.
 
     Es heißt nicht, dass die Architektur gut ist.
 
-    Auch der Umfang zählt: Eine leere Auswahl, eine vergessene Assembly oder ein großzügiger Ausnahmepfad kann sehr überzeugend grün aussehen.
+    Auch der Umfang zählt: Eine leere Auswahl, eine vergessene Assembly oder ein großzügiger
+    Ausnahmepfad kann sehr überzeugend grün aussehen.
 
     Statische Typregeln sehen außerdem nicht jede dynamische Kopplung.
 
-    Eine Klasse, die über einen String geladen wird, eine kaputte DI-Registrierung oder ein inkompatibler HTTP-Vertrag benötigt gegebenenfalls andere Tests.
+    Eine Klasse, die über einen String geladen wird, eine kaputte DI-Registrierung oder ein
+    inkompatibler HTTP-Vertrag benötigt gegebenenfalls andere Tests.
 
     Zu restriktive Regeln können legitime Änderungen blockieren.
 
-    Wenn das ständig passiert, sollte das Team die Regel oder die zugrunde liegende Entscheidung überprüfen, statt immer neue Ausnahmen anzuhängen.
+    Wenn das ständig passiert, sollte das Team die Regel oder die zugrunde liegende Entscheidung
+    überprüfen, statt immer neue Ausnahmen anzuhängen.
 
     Insbesondere der Composition Root muss Implementierungen verdrahten dürfen.
 

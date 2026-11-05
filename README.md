@@ -59,6 +59,7 @@ produktive Anwendung.
 ## Inhalte bearbeiten
 
 - `slides/` enthält die 18 Folien als einzelne HTML-Dateien.
+- `diagrams/` enthält wiederverwendbare Mermaid-Quellen.
 - `slides.js` legt mit `slideFiles` ihre Reihenfolge fest.
 - `slides.css` und `presenter.css` enthalten die Präsentations- und Sprecheransicht-Stile.
 - `demo/` enthält das .NET-Testprojekt.
