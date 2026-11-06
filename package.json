@@ -4,7 +4,8 @@
   "private": true,
   "description": "Ein 20-Minuten-Vortrag zu Architekturtests in .NET und C#",
   "scripts": {
-    "start": "http-server . -a 127.0.0.1 -p 4173 -c-1"
+    "start": "http-server . -a 127.0.0.1 -p 4173 -c-1",
+    "pdf": "http-server . -a 127.0.0.1 -p 4173 -c-1 -o /?print-pdf"
   },
   "dependencies": {
     "http-server": "14.1.1",

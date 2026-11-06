@@ -46,6 +46,6 @@ Beispiel `<` als `&lt;`.
 
 ## PDF
 
-Den Server starten und http://127.0.0.1:4173/?print-pdf öffnen. Im Browser mit
+`npm run pdf` startet den Server und öffnet die Druckansicht im Browser. Mit
 `Ctrl+P` im Querformat drucken und Hintergrundgrafiken aktivieren. Vor dem Teilen
-Seitenumbrüche prüfen.
+Seitenumbrüche prüfen. Mit `Ctrl+C` den Server beenden.

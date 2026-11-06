@@ -222,6 +222,7 @@ async function startPresentation() {
     controlsTutorial: false,
     progress: true,
     slideNumber: 'c',
+    pdfSeparateFragments: false,
     keyboard: { 37: 'prev', 38: 'prev', 39: 'next', 40: 'next' },
     touch: true,
     navigationMode: 'linear',

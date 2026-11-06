@@ -126,6 +126,9 @@ body { background: var(--paper); }
 .reveal .slide-number a { border: 0; padding: 0; font: inherit; color: inherit; }
 .deck-footer { position: fixed; bottom: 16px; left: 28px; right: 24px; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 24px; font-family: var(--font-main); color: var(--muted); font-size: 12px; line-height: 1.4; pointer-events: none; }
 .deck-footer span:last-child { justify-self: end; text-align: right; overflow-wrap: anywhere; }
+html.print-pdf .reveal { background: var(--paper) !important; print-color-adjust: exact; }
+html.print-pdf .reveal .slides .pdf-page { background: var(--paper) !important; print-color-adjust: exact; }
+html.print-pdf .reveal .slides section .fragment { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 @media (max-width: 600px) { .deck-footer { font-size: 10px; left: 12px; right: 12px; bottom: 9px; gap: 16px; } }
 @media (prefers-reduced-motion: reduce) { .reveal .slides section { transition: none !important; } }
 @media print {
