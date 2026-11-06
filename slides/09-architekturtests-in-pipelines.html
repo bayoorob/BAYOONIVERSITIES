@@ -5,9 +5,12 @@
   <h2>
     Verstöße aufdecken.
   </h2>
-  <div class="mermaid compact-diagram" role="img" aria-label="Eine Änderung durchläuft Architekturtests und weitere Tests, bevor sie gemergt werden darf.">
+  <div class="mermaid medium-diagram" role="img" aria-label="Eine Änderung durchläuft Architekturtests und weitere Tests parallel, bevor sie gemergt werden darf.">
 flowchart LR
-  change[Änderung] --> architecture[Architekturtests] --> tests[Weitere Tests] --> merge[Merge]
+  change[Änderung] --> architecture[Architekturtests] --> merge[Merge]
+  change --> tests[Weitere Tests] --> merge
+  classDef focus fill:#ddf46b,stroke:#a3c623,color:#15191e
+  class architecture,tests focus
   </div>
   <ul>
     <li class="fragment">
@@ -18,7 +21,7 @@ flowchart LR
     </li>
   </ul>
   <aside class="notes">
-Architekturtests brauchen keine besondere Infrastruktur.
+Architekturtests auszuführen braucht keine besondere Infrastruktur.
 
 Sie laufen mit `dotnet test` und lassen sich direkt in unsere bestehende Pipeline aufnehmen.
 

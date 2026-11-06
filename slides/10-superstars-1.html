@@ -7,19 +7,25 @@
   </h2>
   <div class="superstar-gallery">
     <figure class="superstar-item fragment">
-      <img src="screenshots/superstar_1.png" alt="C#-Test: Migrationen sollen SqlWithExecute statt der EF-Core-Sql-Methode verwenden.">
+      <img src="screenshots/superstar_1.png" 
+      alt="C#-Test: Migrationen sollen SqlWithExecute statt der EF-Core-Sql-Methode verwenden.">
     </figure>
     <figure class="superstar-item fragment">
-      <img src="screenshots/superstar_2.png" alt="C#-Test: Schemaändernde Migrationen benötigen eine ausgefüllte Rollback-Methode.">
+      <img src="screenshots/superstar_2.png" 
+      alt="C#-Test: Schemaändernde Migrationen benötigen eine ausgefüllte Rollback-Methode.">
     </figure>
   </div>
-  <aside class="notes">
-    Diese beiden Tests schützen konkrete Konventionen aus dem Projektalltag.
+<aside class="notes">
+  Diese beiden Tests schützen konkrete Konventionen aus unserem Projektalltag.
 
-    Der erste verhindert, dass Migrationen den falschen SQL-Ausführungspfad verwenden.
+  <PRESS>
 
-    Der zweite verlangt eine Rücknahmemethode, wenn eine Migration das Schema verändert.
+  Der erste stellt sicher, dass Migrationen den vorgesehenen SQL-Ausführungspfad verwenden.
 
-    Solche Regeln sind besonders nützlich, wenn sie einen echten Wartungs- oder Betriebsfehler verhindern.
-  </aside>
+  <PRESS>
+
+  Der zweite verlangt bei schemaändernden Migrationen eine implementierte Rollback-Methode.
+
+  Beide Regeln helfen, Wartungs- und Betriebsfehler frühzeitig zu verhindern.
+</aside>
 </section>

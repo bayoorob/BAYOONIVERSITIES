@@ -7,17 +7,21 @@
   </h2>
   <div class="superstar-gallery">
     <figure class="superstar-item">
-      <img src="screenshots/superstar_3.png" alt="C#-Test: Prüft, dass jede Entity eine ID und UUID hat.">
+      <img src="screenshots/superstar_3.png" 
+      alt="C#-Test: Prüft, dass jede Entity eine ID und UUID hat.">
     </figure>
     <figure class="superstar-item fragment">
-      <img src="screenshots/superstar_4.png" alt="C#-Test: Prüft, dass Entity Framework keine Fremdschlüssel allein aus Namen ableitet.">
+      <img src="screenshots/superstar_4.png" 
+      alt="C#-Test: Prüft, dass Entity Framework keine Fremdschlüssel allein aus Namen ableitet.">
     </figure>
   </div>
-  <aside class="notes">
-    Eine Regel kann sicherstellen, dass Enum-Typen eine vereinbarte Namenskonvention einhalten.
+<aside class="notes">
+  Der erste Test stellt sicher, dass jede Entity sowohl eine ID als auch eine UUID besitzt.
 
-    Eine weitere Regel verhindert, dass Entity Framework Fremdschlüssel allein aus Namen ableitet.
+  <PRESS>
 
-    Beide Regeln machen implizite Annahmen sichtbar und überprüfbar.
-  </aside>
+  Der zweite verhindert, dass Entity Framework Fremdschlüssel allein anhand von Namenskonventionen ableitet.
+
+  Damit erzwingen wir explizite Beziehungen und vermeiden unbeabsichtigte Änderungen am Datenbankschema.
+</aside>
 </section>

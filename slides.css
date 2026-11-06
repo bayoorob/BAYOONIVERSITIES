@@ -94,6 +94,7 @@ body { background: var(--paper); }
 .superstar-item figcaption { color: var(--muted); font-size: 15px; line-height: 1.25; }
 .superstar-gallery-single .superstar-item img { max-height: 240px; }
 .compact-diagram { height: 108px; }
+.medium-diagram { height: 220px; }
 .scope-diagram { height: 310px; }
 .title-diagram { height: 112px; margin: 28px 0 26px; }
 .reveal .opening .lead { color: #c6cbd3; }

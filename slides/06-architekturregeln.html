@@ -1,9 +1,9 @@
 <section data-timing="120">
   <p class="eyebrow">
-    Aus dem Abhängigkeitsdiagramm abgeleitet
+    Aus dem Abhängigkeitsdiagramm abgeleitete Regeln
   </p>
   <h2>
-    5 Architekturregeln für unser Shop-Backend
+    4 Architekturregeln für unser Shop-Backend
   </h2>
   <div class="architecture-rule-layout">
     <div id="shop-architecture-rules-diagram" class="mermaid architecture-diagram rules-diagram" data-src="diagrams/shop-architecture.mmd" data-direction="TB" role="img" aria-label="Kompakte vertikale Ansicht der Shop-Abhängigkeiten mit drei verbotenen Richtungen.">
@@ -17,38 +17,51 @@
       <ol class="architecture-rule-list">
         <li class="fragment">
           <span class="rule-text">Controller dürfen nicht auf den <code>DbContext</code> zugreifen.</span>
-          <span class="rule-reason">Datenbankzugriffe gehören in die BusinessLogic. So umgehen Controller keine Geschäftslogik.</span>
+          <span class="rule-reason">Datenbankzugriffe gehören in die BusinessLogic. 
+            So umgehen Controller keine Geschäftslogik.</span>
         </li>
         <li class="fragment">
           <span class="rule-text">Controller dürfen nicht auf Entities zugreifen.</span>
-          <span class="rule-reason">Die API soll nicht vom internen Datenmodell abhängen. Dafür verwenden wir DTOs aus ApiObjects.</span>
+          <span class="rule-reason">Die API soll nicht vom internen Datenmodell abhängen. 
+            Dafür verwenden wir DTOs aus ApiObjects.</span>
         </li>
         <li class="fragment">
           <span class="rule-text">Services dürfen nicht von Controllern abhängen.</span>
           <span class="rule-reason">Die BusinessLogic bleibt unabhängig von der API und wiederverwendbar.</span>
         </li>
         <li class="fragment">
-          <span class="rule-text">Services dürfen nicht direkt vom <code>DbContext</code> abhängen, wenn der Zugriff über einen anderen Service erfolgen soll.</span>
-          <span class="rule-reason">Fachliche Zuständigkeiten bleiben getrennt. Ein Service soll nicht die Datenzugriffe anderer Services übernehmen.</span>
-        </li>
-        <li class="fragment">
           <span class="rule-text">Entities dürfen nicht von API oder BusinessLogic abhängen.</span>
-          <span class="rule-reason">Das Datenmodell bleibt unabhängig von höheren Schichten. API-Änderungen erzwingen so keine Änderungen an Entities.</span>
+          <span class="rule-reason">Das Datenmodell bleibt unabhängig von höheren Schichten. 
+            API-Änderungen erzwingen so keine Änderungen an Entities.</span>
         </li>
       </ol>
     </div>
   </div>
   <aside class="notes">
-    Diese fünf Regeln übersetzen die erlaubten und verbotenen Abhängigkeiten aus dem Diagramm in überprüfbare Aussagen.
+Aus unserem Abhängigkeitsdiagramm lassen sich fünf konkrete Architekturregeln ableiten.
 
-    Controller greifen weder direkt auf den DbContext noch auf Entities zu; die API verwendet dafür DTOs aus ApiObjects.
+**Regel 1: Controller dürfen nicht auf den DbContext zugreifen.**
 
-    Services hängen nicht von Controllern ab und bleiben dadurch unabhängig von der API.
+Datenbankzugriffe gehören in die BusinessLogic, nicht in unsere Controller.
 
-    Wenn Datenzugriff zu einem anderen Service gehört, soll ein Service dessen Zuständigkeit nicht umgehen und direkt den DbContext verwenden.
+<PRESS>
 
-    Entities bleiben unabhängig von API und BusinessLogic, damit Änderungen an höheren Schichten das Datenmodell nicht erzwingen.
+**Regel 2: Controller dürfen nicht auf Entities zugreifen.**
 
-    Die Regeln schützen getrennte Zuständigkeiten und unabhängige Änderungen, nicht bloß eine bestimmte Namenskonvention.
+Wir verwenden stattdessen DTOs aus ApiObjects, damit API-Verträge und internes Datenmodell getrennt bleiben.
+
+<PRESS>
+
+**Regel 3: Services dürfen nicht von Controllern abhängen.**
+
+Unsere BusinessLogic soll unabhängig von der API funktionieren und wiederverwendbar bleiben.
+
+<PRESS>
+
+**Regel 4: Entities dürfen nicht von API oder BusinessLogic abhängen.**
+
+Unser Datenmodell soll unabhängig von den darüberliegenden Schichten bleiben.
+
+Diese Regeln sind bewusste Architekturentscheidungen, die wir anschließend automatisiert überprüfen können.
   </aside>
 </section>

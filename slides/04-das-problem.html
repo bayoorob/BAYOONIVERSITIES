@@ -40,12 +40,13 @@ So weit, so gut.
 
 Im nächsten Sprint brauchen wir zusätzliche Daten, die unser Service noch nicht bereitstellt.
 
-Aber der DbContext hat sie ja schon. Also injizieren wir einfach den DbContext direkt in den Controller.
-Geht schneller.
+Aber der DbContext hat sie ja schon, weil die Entity schon korrekt implementiert ist.
+Also injizieren wir einfach den DbContext direkt in den Controller. 
+Das geht schnell, ist lesbar, der Code scheint zu funktionieren.
 
 <PRESS>
 
-Das Ticket ist fertig, die Unit-Tests sind grün und alle sind glücklich, bis auf den Architekten.
+Das Ticket ist fertig, die Unit-Tests sind grün und alle sind glücklich, bis auf den oder die ArchitektIn.
 
 Denn wir haben gerade eine der Architekturregeln verletzt, leider ohne dass es jemand bemerkt.
 

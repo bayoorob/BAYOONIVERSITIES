@@ -1,3 +1,4 @@
+
 <section data-timing="45">
   <p class="eyebrow">
     .NET / Werkzeugwahl
@@ -8,63 +9,54 @@
   <table class="framework-table">
     <thead>
       <tr>
-        <th>
-          Werkzeug
-        </th>
-        <th>
-          Wofür es sich anbietet
-        </th>
+        <th>Werkzeug</th>
+        <th>Wofür es sich anbietet</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          NetArchTest.Rules
-        </td>
-        <td>
-          Kompakte Regeln über Typen und Abhängigkeiten
-        </td>
+      <tr class="fragment">
+        <td>NetArchTest.Rules</td>
+        <td>Kompakte Regeln über Typen und Abhängigkeiten</td>
       </tr>
-      <tr>
-        <td>
-          ArchUnitNET
-        </td>
-        <td>
-          Ein ausführlicheres Modell der Architekturbeziehungen
-        </td>
+      <tr class="fragment">
+        <td>ArchUnitNET</td>
+        <td>Ein ausführlicheres Modell der Architekturbeziehungen</td>
       </tr>
-      <tr>
-        <td>
-          .NET Reflection
-        </td>
-        <td>
-          Eigene, eng begrenzte Typkonventionen
-        </td>
+      <tr class="fragment">
+        <td>.NET Reflection</td>
+        <td>Eigene, eng begrenzte Typkonventionen</td>
       </tr>
     </tbody>
   </table>
-  <p class="statement">
+  <p class="statement fragment">
     Heute: NetArchTest + xUnit als Testing Framework
   </p>
   <aside class="notes">
-Für Architekturtests gibt es im .NET-Umfeld verschiedene Bibliotheken.
+    Im .NET-Umfeld gibt es verschiedene Möglichkeiten,
+    Architekturtests umzusetzen.
 
-NetArchTest ist eine recht schlanke Lösung, mit der wir Regeln für Typen, Namespaces und
-Abhängigkeiten definieren können in Form von C#-Code.
+    <PRESS>
 
-ArchUnitNET bietet einen etwas umfangreicheren Ansatz und bildet die Beziehungen zwischen
-unseren Klassen und Schichten detaillierter ab.
+    NetArchTest ist eine schlanke Bibliothek für Regeln
+    über Typen, Namespaces und Abhängigkeiten.
 
-Alternativ können wir auch die eingebaute .NET Reflection verwenden.
+    <PRESS>
 
-Damit lassen sich ebenfalls Typen und ihre Abhängigkeiten untersuchen. Die eigentliche
-Prüflogik müssten wir allerdings selbst implementieren.
+    ArchUnitNET bietet ein umfangreicheres Modell
+    unserer Architekturbeziehungen.
 
-Für unsere Beispiele verwenden wir NetArchTest zusammen mit xUnit als Testing Framework.
+    <PRESS>
 
-Wir können die Tests lokal mit `dotnet test` ausführen und genauso wie unsere Unit-Tests
-in die CI-Pipeline aufnehmen.
+    Alternativ können wir .NET Reflection verwenden.
+    Die Prüflogik müssen wir dann selbst schreiben.
 
-Ein Architekturverstoß führt dann schlicht zu einem fehlgeschlagenen Test.
+    <PRESS>
+
+    Für unsere Beispiele verwenden wir NetArchTest
+    zusammen mit xUnit.
+
+    Die Tests laufen mit dotnet test und können
+    genauso in unsere CI-Pipeline integriert werden
+    wie gewöhnliche Unit-Tests.
   </aside>
 </section>

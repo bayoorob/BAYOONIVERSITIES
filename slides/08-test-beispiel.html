@@ -27,7 +27,8 @@ public void BusinessLogic_Should_Not_Depend_On_Api()
   </code>
   </pre>
   <aside class="notes">
-Hier sehen wir einen vollständigen Architekturtest mit NetArchTest und xUnit.
+Hier sehen wir einen vollständigen Architekturtest der mit Funktionen aus der Bibliothek NetArchTest 
+geschrieben wurde und mit dem Testing Framework xUnit umgesetzt wird.
 
 Wir wollen in diesem Fall sicherstellen, dass unsere BusinessLogic keine Abhängigkeiten zur API hat.
 
@@ -39,7 +40,8 @@ Anschließend wählen wir mit NetArchTest alle Typen aus, die im Namespace
 Mit `Assert.NotEmpty` stellen wir sicher, dass wir auch tatsächlich Typen gefunden haben.
 Sonst könnte unser Test erfolgreich durchlaufen, obwohl er überhaupt nichts überprüft.
 
-Der interessante Teil kommt mit `ShouldNot().HaveDependencyOn()`.
+Der interessante Teil kommt dann mit `ShouldNot().HaveDependencyOn()`. Das ist extrem schöne, lesbare 
+Fluent Syntax so wie bei LINQ Abfragen über Collections.
 
 Damit legen wir fest, dass keiner dieser Typen eine Abhängigkeit zum Namespace `Shop.Api`
 haben darf.
@@ -49,7 +51,7 @@ Zum Schluss prüfen wir mit `Assert.True`, ob die Regel eingehalten wurde.
 Falls beispielsweise jemand einen Controller in einem Service referenziert, schlägt der
 Test fehl.
 
-Und damit haben wir eine Architekturregel, die nicht mehr nur irgendwo dokumentiert ist,
-sondern bei jedem Testlauf automatisch überprüft wird.
+Und damit haben wir eine Architekturregel, die über ihre reine Dokumentation hinausgewachsen ist,
+und bei jedem Testlauf automatisch überprüft wird.
   </aside>
 </section>

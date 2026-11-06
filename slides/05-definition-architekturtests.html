@@ -37,44 +37,24 @@
     Architekturentscheidungen werden zu ausführbaren Regeln.
   </p>
   <aside class="notes">
-    Ein Architekturtest untersucht den Aufbau einer Anwendung: Welche Typen verwenden welche anderen
-    Typen?
+Was genau ist eigentlich ein Architekturtest?
 
-    Welche Klassen implementieren ein Interface?
+Um das zu verstehen, vergleichen wir ihn am besten mit einem klassischen Unit-Test.
 
-    Wo liegen die öffentlichen Einstiegspunkte?
+**Ein Unit-Test** überprüft das Verhalten unseres Codes. Zum Beispiel: Berechnet ein Service für bestimmte Eingaben den richtigen Preis?
 
-    Ein Unit-Test untersucht dagegen typischerweise das Verhalten eines begrenzten Bausteins für
-    konkrete Eingaben.
+<PRESS>
 
-    Beides kann im selben Testprojekt und im selben Testlauf passieren.
+**Ein Architekturtest** stellt dagegen eine andere Frage: Darf unser Code überhaupt so aufgebaut sein, wie er gerade aufgebaut ist?
 
-    Der Unterschied liegt in der Frage, nicht unbedingt im Werkzeug.
+Zum Beispiel: Darf ein Controller direkt auf den DbContext zugreifen, oder haben wir entschieden, dass Datenbankzugriffe ausschließlich über unsere Services erfolgen sollen?
 
-    Ein Service kann fachlich korrekt rechnen und gleichzeitig eine Abhängigkeit besitzen, die wir
-    ausdrücklich nicht wollen.
+Der entscheidende Unterschied ist also: **Wir testen nicht das Verhalten, sondern die Struktur und die Abhängigkeiten unseres Codes.**
 
-    Für eine brauchbare Architekturregel müssen drei Dinge klar sein.
+<PRESS>
 
-    Erstens die Auswahl: Welche Typen oder Module betrachten wir?
+Und damit können wir Architekturentscheidungen, die sonst vielleicht nur in einer Dokumentation stehen oder im Code-Review auffallen, in ausführbare Regeln übersetzen.
 
-    Zweitens die Erwartung: Was darf diese Auswahl kennen oder eben nicht kennen?
-
-    Drittens die Ausführung: Wann bekommt jemand das Ergebnis zu sehen?
-
-    Saubere Architektur ist keine prüfbare Aussage.
-
-    BusinessLogic darf keine Typen aus dem API-Namespace verwenden schon.
-
-    Das ist nebenbei ein nützlicher Test für unsere Architekturgespräche: Wenn wir die Entscheidung
-    nicht konkret formulieren können, wird sie auch durch mehr Pfeile im Diagramm nicht eindeutiger.
-
-    Der Test ersetzt weder Unit- noch Integrations- noch End-to-End-Tests.
-
-    Er beantwortet eine zusätzliche Frage, die in diesen Tests oft gar nicht vorkommt.
-
-    Die Regeln sind damit ausführbare Dokumentation.
-
-    Allerdings nur für die Entscheidungen, die wir tatsächlich hineingeschrieben haben.
+Diese Regeln können wir dann genauso automatisiert überprüfen wie unsere Unit-Tests.
   </aside>
 </section>

@@ -16,10 +16,11 @@
   </p>
   <aside class="notes">
 
-Ich möchte das Thema anhand von diesem fiktiven Beispiel eines typischen .NET-Backends anschaulich machen.
+Ich möchte das Thema der Architekturtests anhand von diesem fiktiven Beispiel eines 
+typischen .NET-Backends anschaulich machen.
 
-Wir haben hier unsere API, die BusinessLogic, die ApiObjects und unser Model mit den
-EF-Core-Entities und dem DbContext.
+Wir haben hier unsere API, die BusinessLogic, die ApiObjects und unser Datenbank-Model mit den
+Entities und dem DbContext.
 
 Die Idee ist, dass jede Schicht bestimmte Aufgaben übernimmt und nicht einfach beliebig
 auf alle anderen Schichten zugreifen darf.
@@ -38,10 +39,10 @@ Diese Grenzen zu ziehen hat einen guten Grund. Wir wollen Verantwortlichkeiten s
 Abhängigkeiten reduzieren und verhindern, dass Änderungen an einer Schicht unnötige Anpassungen
 in anderen Schichten nach sich ziehen.
 
-Das sind grundlegende Prinzipien wie Separation of Concerns und Loose Coupling. Diese sorgen
+Die Prinzipien dahinter sind grundlegende so wie Separation of Concerns und Loose Coupling. Diese sorgen
 dafür, dass unsere Anwendung auch mit wachsender Codebasis wartbar, testbar und erweiterbar bleibt.
 
-Und mit Architekturtests können wir automatisch überprüfen, ob wir diese Prinzipien auch
+Das Ziel ist es, mit Architekturtests sicherzustellen, dass wir diese Prinzipien auch
 tatsächlich einhalten.
 
   </aside>
